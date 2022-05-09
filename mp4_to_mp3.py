@@ -8,6 +8,15 @@ def convert_video_to_audio_ffmpeg(video_file, output_ext="mp3"):
                     stdout=subprocess.DEVNULL,
                     stderr=subprocess.STDOUT)
 
+def get_files_from_dir(dir):
+	filelist = []
+	for filename in os.listdir(dir):
+		filelist.append(filename)
+	return(filelist)
+
 if __name__ == "__main__":
-    vf = sys.argv[1]
-    convert_video_to_audio_ffmpeg(vf)
+	filelist = get_files_from_dir(sys.argv[1])
+	print(filelist)
+	for file in filelist:
+		#vf = sys.argv[1]
+		convert_video_to_audio_ffmpeg(file)
